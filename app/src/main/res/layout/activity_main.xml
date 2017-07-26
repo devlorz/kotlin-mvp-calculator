@@ -1,18 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.leeway.android_kotlin_mvp.ui.main.MainActivity">
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/tvAmount"
+        style="@style/TextStyle.Title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom|end"
+        android:padding="@dimen/spacing_16"
+        android:text="@string/zero" />
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_cal_c"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/orange"
+                android:text="@string/cal_c"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_cal_seven"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/seven" />
+
+            <Button
+                android:id="@+id/btn_cal_four"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/four" />
+
+            <Button
+                android:id="@+id/btn_cal_one"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/one" />
+
+            <Button
+                android:id="@+id/btn_cal_zero"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/zero" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_cal_divide"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/divide" />
+
+            <Button
+                android:id="@+id/btn_cal_eight"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/eight" />
+
+            <Button
+                android:id="@+id/btn_cal_five"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/five" />
+
+            <Button
+                android:id="@+id/btn_cal_two"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/two" />
+
+            <Button
+                android:id="@+id/btn_cal_triple_zero"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/triple_zero" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_cal_multiple"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/multiple"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_cal_nine"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/nine" />
+
+            <Button
+                android:id="@+id/btn_cal_six"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/six" />
+
+            <Button
+                android:id="@+id/btn_cal_three"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/three" />
+
+            <Button
+                android:id="@+id/btn_cal_dot"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:text="@string/dot" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_cal_delete"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/delete" />
+
+            <Button
+                android:id="@+id/btn_cal_minus"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/minus" />
+
+            <Button
+                android:id="@+id/btn_cal_plus"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/plus" />
+
+            <Button
+                android:id="@+id/btn_cal_equal"
+                style="@style/TextStyle.SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:backgroundTint="@color/green"
+                android:text="@string/equal" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
