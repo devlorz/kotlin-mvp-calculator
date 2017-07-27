@@ -27,7 +27,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_cal_c"
+                android:id="@+id/btnCalC"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -37,7 +37,7 @@
                 android:textAllCaps="false" />
 
             <Button
-                android:id="@+id/btn_cal_seven"
+                android:id="@+id/btnCalSeven"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -46,7 +46,7 @@
                 android:text="@string/seven" />
 
             <Button
-                android:id="@+id/btn_cal_four"
+                android:id="@+id/btnCalFour"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -55,7 +55,7 @@
                 android:text="@string/four" />
 
             <Button
-                android:id="@+id/btn_cal_one"
+                android:id="@+id/btnCalOne"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -64,7 +64,7 @@
                 android:text="@string/one" />
 
             <Button
-                android:id="@+id/btn_cal_zero"
+                android:id="@+id/btnCalZero"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -81,7 +81,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_cal_divide"
+                android:id="@+id/btnCalDivide"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -89,7 +89,7 @@
                 android:text="@string/divide" />
 
             <Button
-                android:id="@+id/btn_cal_eight"
+                android:id="@+id/btnCalEight"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -98,7 +98,7 @@
                 android:text="@string/eight" />
 
             <Button
-                android:id="@+id/btn_cal_five"
+                android:id="@+id/btnCalFive"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -107,7 +107,7 @@
                 android:text="@string/five" />
 
             <Button
-                android:id="@+id/btn_cal_two"
+                android:id="@+id/btnCalTwo"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -116,7 +116,7 @@
                 android:text="@string/two" />
 
             <Button
-                android:id="@+id/btn_cal_triple_zero"
+                android:id="@+id/btnCalTripleZero"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -133,7 +133,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_cal_multiple"
+                android:id="@+id/btnCalMultiple"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -142,7 +142,7 @@
                 android:textAllCaps="false" />
 
             <Button
-                android:id="@+id/btn_cal_nine"
+                android:id="@+id/btnCalNine"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -151,7 +151,7 @@
                 android:text="@string/nine" />
 
             <Button
-                android:id="@+id/btn_cal_six"
+                android:id="@+id/btnCalSix"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -160,7 +160,7 @@
                 android:text="@string/six" />
 
             <Button
-                android:id="@+id/btn_cal_three"
+                android:id="@+id/btnCalThree"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -169,7 +169,7 @@
                 android:text="@string/three" />
 
             <Button
-                android:id="@+id/btn_cal_dot"
+                android:id="@+id/btnCalDot"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -186,7 +186,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_cal_delete"
+                android:id="@+id/btnCalDelete"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -194,7 +194,7 @@
                 android:text="@string/delete" />
 
             <Button
-                android:id="@+id/btn_cal_minus"
+                android:id="@+id/btnCalMinus"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -202,7 +202,7 @@
                 android:text="@string/minus" />
 
             <Button
-                android:id="@+id/btn_cal_plus"
+                android:id="@+id/btnCalPlus"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -210,7 +210,7 @@
                 android:text="@string/plus" />
 
             <Button
-                android:id="@+id/btn_cal_equal"
+                android:id="@+id/btnCalEqual"
                 style="@style/TextStyle.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

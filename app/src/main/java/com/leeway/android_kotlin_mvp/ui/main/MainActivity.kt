@@ -1,11 +1,13 @@
 package com.leeway.android_kotlin_mvp.ui.main
 
 import android.os.Bundle
+import android.view.View
 import com.leeway.android_kotlin_mvp.R
 import com.leeway.android_kotlin_mvp.ui.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), MainContract.View {
+class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
 
     @Inject
     lateinit var mainPresenter: MainContract.Presenter<MainContract.View>
@@ -24,6 +26,35 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
     override fun setUp() {
+        btnCalZero.setOnClickListener(this)
+        btnCalOne.setOnClickListener(this)
+        btnCalTwo.setOnClickListener(this)
+        btnCalThree.setOnClickListener(this)
+        btnCalFour.setOnClickListener(this)
+        btnCalFive.setOnClickListener(this)
+        btnCalSix.setOnClickListener(this)
+        btnCalSeven.setOnClickListener(this)
+        btnCalEight.setOnClickListener(this)
+        btnCalNine.setOnClickListener(this)
+    }
+
+    override fun onClick(view: View?) {
+        val currentAmount = tvAmount.text.toString()
+        when (view) {
+            btnCalZero -> mainPresenter.onCalZeroPress(currentAmount)
+            btnCalOne -> mainPresenter.onCalOnePress(currentAmount)
+            btnCalTwo -> mainPresenter.onCalTwoPress(currentAmount)
+            btnCalThree -> mainPresenter.onCalThreePress(currentAmount)
+            btnCalFour -> mainPresenter.onCalFourPress(currentAmount)
+            btnCalFive -> mainPresenter.onCalFivePress(currentAmount)
+            btnCalSix -> mainPresenter.onCalSixPress(currentAmount)
+            btnCalSeven -> mainPresenter.onCalSevenPress(currentAmount)
+            btnCalEight -> mainPresenter.onCalEightPress(currentAmount)
+            btnCalNine -> mainPresenter.onCalNinePress(currentAmount)
+        }
+    }
+
+    override fun setCurrentValue(value: String) {
 
     }
 }
