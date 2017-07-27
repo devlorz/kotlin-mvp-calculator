@@ -1,2 +1,2 @@
-# android-kotlin-mvp
-android MVP boilerplate with kotlin inspired from https://github.com/MindorksOpenSource/android-mvp-architecture
+# kotlin-mvp-calculator
+Simple Android calculator app built with kotlin and MVP architecture
