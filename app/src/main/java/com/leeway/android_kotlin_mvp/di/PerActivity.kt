@@ -9,5 +9,5 @@ import javax.inject.Scope
  */
 
 @Scope
-@Retention(RetentionPolicy.RUNTIME)
+@kotlin.annotation.Retention
 annotation class PerActivity

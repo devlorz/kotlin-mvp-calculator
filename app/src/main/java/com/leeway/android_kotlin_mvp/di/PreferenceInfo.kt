@@ -9,5 +9,5 @@ import javax.inject.Qualifier
  */
 
 @Qualifier
-@Retention(RetentionPolicy.RUNTIME)
+@kotlin.annotation.Retention
 annotation class PreferenceInfo
