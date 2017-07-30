@@ -35,9 +35,11 @@ class ActivityModule(val activity: Activity) {
         return CompositeDisposable()
     }
 
+//    inline fun <reified T: Any> mock(): T = Mockito.mock(T::class.java)
+
     @Provides
     @PerActivity
-    internal fun providesMainPresenter(): MainContract.Presenter<*> {
-        return Mockito.mock<MainContract.Presenter<*>>(MainContract.Presenter::class.java)
+    fun provideMainPresenter(): MainContract.Presenter<MainContract.View> {
+        return Mockito.mock(MainContract.Presenter::class.java) as MainContract.Presenter<MainContract.View>
     }
 }
