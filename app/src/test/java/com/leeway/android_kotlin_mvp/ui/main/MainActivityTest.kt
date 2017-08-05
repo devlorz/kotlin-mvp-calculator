@@ -1,21 +1,19 @@
 package com.leeway.android_kotlin_mvp.ui.main
 
-import android.widget.Button
 import com.leeway.android_kotlin_mvp.BuildConfig
-import com.leeway.android_kotlin_mvp.R
 import kotlinx.android.synthetic.main.activity_main.*
+import org.hamcrest.Matchers.notNullValue
+import org.hamcrest.core.Is.`is`
+import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.android.controller.ActivityController
 import org.robolectric.annotation.Config
-import org.junit.Assert.assertThat
-import org.hamcrest.core.Is.`is`
-import org.hamcrest.Matchers.notNullValue
-import org.mockito.Mockito.verify
 
 /**
  * Created by Lee Lorz on 7/29/2017.
@@ -27,6 +25,7 @@ import org.mockito.Mockito.verify
 class MainActivityTest {
     lateinit var activityController: ActivityController<MainActivity>
     lateinit var activity: MainActivity
+    lateinit var currentAmount: String
 
     @Before
     @Throws(Exception::class)
@@ -34,6 +33,7 @@ class MainActivityTest {
         MockitoAnnotations.initMocks(this)
         activityController = Robolectric.buildActivity(MainActivity::class.java).create()
         activity = activityController.get()
+        currentAmount = activity.tvAmount.text.toString()
     }
 
     @Test
@@ -76,9 +76,16 @@ class MainActivityTest {
 
     @Test
     @Throws(Exception::class)
+    fun testBtnCalCClick() {
+        activity.btnCalC.performClick()
+        verify(activity.mainPresenter).onCalCPress()
+    }
+
+    @Test
+    @Throws(Exception::class)
     fun testBtnCalZeroClick() {
         activity.btnCalZero.performClick()
-        val currentAmount = activity.tvAmount.text.toString()
+//        val currentAmount = activity.tvAmount.text.toString()
         verify(activity.mainPresenter).onCalZeroPress(currentAmount)
     }
 

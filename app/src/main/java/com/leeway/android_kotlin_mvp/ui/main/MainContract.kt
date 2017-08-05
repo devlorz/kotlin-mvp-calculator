@@ -9,6 +9,7 @@ import com.leeway.android_kotlin_mvp.ui.base.MvpView
 interface MainContract {
 
     interface Presenter<V:MainContract.View>: MvpPresenter<V> {
+        fun onCalCPress()
         fun onCalZeroPress(currentAmount: String)
         fun onCalOnePress(currentAmount: String)
         fun onCalTwoPress(currentAmount: String)

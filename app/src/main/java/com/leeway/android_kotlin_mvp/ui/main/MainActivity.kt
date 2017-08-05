@@ -26,6 +26,7 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
     }
 
     override fun setUp() {
+        btnCalC.setOnClickListener(this)
         btnCalZero.setOnClickListener(this)
         btnCalOne.setOnClickListener(this)
         btnCalTwo.setOnClickListener(this)
@@ -41,6 +42,7 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
     override fun onClick(view: View?) {
         val currentAmount = tvAmount.text.toString()
         when (view) {
+            btnCalC -> mainPresenter.onCalCPress()
             btnCalZero -> mainPresenter.onCalZeroPress(currentAmount)
             btnCalOne -> mainPresenter.onCalOnePress(currentAmount)
             btnCalTwo -> mainPresenter.onCalTwoPress(currentAmount)
@@ -55,6 +57,6 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
     }
 
     override fun setCurrentValue(value: String) {
-
+        tvAmount.text = value
     }
 }

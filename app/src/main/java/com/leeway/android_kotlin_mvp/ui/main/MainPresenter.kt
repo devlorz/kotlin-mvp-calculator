@@ -13,6 +13,9 @@ class MainPresenter<V: MainContract.View>
 constructor(dataManager: DataManager,
             compositeDisposable: CompositeDisposable) :
         BasePresenter<V>(dataManager, compositeDisposable), MainContract.Presenter<V> {
+    override fun onCalCPress() {
+        mvpView!!.setCurrentValue("0")
+    }
 
     override fun onCalZeroPress(currentAmount: String) {
         setCalValue(currentAmount, "0")
