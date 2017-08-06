@@ -28,6 +28,7 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
     override fun setUp() {
         btnCalC.setOnClickListener(this)
         btnCalZero.setOnClickListener(this)
+        btnCalTripleZero.setOnClickListener(this)
         btnCalOne.setOnClickListener(this)
         btnCalTwo.setOnClickListener(this)
         btnCalThree.setOnClickListener(this)
@@ -37,6 +38,7 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
         btnCalSeven.setOnClickListener(this)
         btnCalEight.setOnClickListener(this)
         btnCalNine.setOnClickListener(this)
+        btnCalDot.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -44,6 +46,7 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
         when (view) {
             btnCalC -> mainPresenter.onCalCPress()
             btnCalZero -> mainPresenter.onCalZeroPress(currentAmount)
+            btnCalTripleZero -> mainPresenter.onCalTripleZeroPress(currentAmount)
             btnCalOne -> mainPresenter.onCalOnePress(currentAmount)
             btnCalTwo -> mainPresenter.onCalTwoPress(currentAmount)
             btnCalThree -> mainPresenter.onCalThreePress(currentAmount)
@@ -53,6 +56,7 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
             btnCalSeven -> mainPresenter.onCalSevenPress(currentAmount)
             btnCalEight -> mainPresenter.onCalEightPress(currentAmount)
             btnCalNine -> mainPresenter.onCalNinePress(currentAmount)
+            btnCalDot -> mainPresenter.onCalDotPress(currentAmount)
         }
     }
 

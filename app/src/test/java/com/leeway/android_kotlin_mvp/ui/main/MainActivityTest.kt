@@ -85,15 +85,20 @@ class MainActivityTest {
     @Throws(Exception::class)
     fun testBtnCalZeroClick() {
         activity.btnCalZero.performClick()
-//        val currentAmount = activity.tvAmount.text.toString()
         verify(activity.mainPresenter).onCalZeroPress(currentAmount)
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun testBtnCalTripleZeroClick() {
+        activity.btnCalTripleZero.performClick()
+        verify(activity.mainPresenter).onCalTripleZeroPress(currentAmount)
     }
 
     @Test
     @Throws(Exception::class)
     fun testBtnCalOneClick() {
         activity.btnCalOne.performClick()
-        val currentAmount = activity.tvAmount.text.toString()
         verify(activity.mainPresenter).onCalOnePress(currentAmount)
     }
 
@@ -101,7 +106,6 @@ class MainActivityTest {
     @Throws(Exception::class)
     fun testBtnCalTwoClick() {
         activity.btnCalTwo.performClick()
-        val currentAmount = activity.tvAmount.text.toString()
         verify(activity.mainPresenter).onCalTwoPress(currentAmount)
     }
 
@@ -109,7 +113,6 @@ class MainActivityTest {
     @Throws(Exception::class)
     fun testBtnCalThreeClick() {
         activity.btnCalThree.performClick()
-        val currentAmount = activity.tvAmount.text.toString()
         verify(activity.mainPresenter).onCalThreePress(currentAmount)
     }
 
@@ -117,7 +120,6 @@ class MainActivityTest {
     @Throws(Exception::class)
     fun testBtnCalFourClick() {
         activity.btnCalFour.performClick()
-        val currentAmount = activity.tvAmount.text.toString()
         verify(activity.mainPresenter).onCalFourPress(currentAmount)
     }
 
@@ -125,7 +127,6 @@ class MainActivityTest {
     @Throws(Exception::class)
     fun testBtnCalFiveClick() {
         activity.btnCalFive.performClick()
-        val currentAmount = activity.tvAmount.text.toString()
         verify(activity.mainPresenter).onCalFivePress(currentAmount)
     }
 
@@ -141,7 +142,6 @@ class MainActivityTest {
     @Throws(Exception::class)
     fun testBtnCalSevenClick() {
         activity.btnCalSeven.performClick()
-        val currentAmount = activity.tvAmount.text.toString()
         verify(activity.mainPresenter).onCalSevenPress(currentAmount)
     }
 
@@ -149,7 +149,6 @@ class MainActivityTest {
     @Throws(Exception::class)
     fun testBtnCalEightClick() {
         activity.btnCalEight.performClick()
-        val currentAmount = activity.tvAmount.text.toString()
         verify(activity.mainPresenter).onCalEightPress(currentAmount)
     }
 
@@ -157,8 +156,14 @@ class MainActivityTest {
     @Throws(Exception::class)
     fun testBtnCalNineClick() {
         activity.btnCalNine.performClick()
-        val currentAmount = activity.tvAmount.text.toString()
         verify(activity.mainPresenter).onCalNinePress(currentAmount)
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun testBtnCalDotClick() {
+        activity.btnCalDot.performClick()
+        verify(activity.mainPresenter).onCalDotPress(currentAmount)
     }
 
     @Test

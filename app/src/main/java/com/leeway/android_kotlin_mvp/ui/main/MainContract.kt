@@ -20,6 +20,8 @@ interface MainContract {
         fun onCalSevenPress(currentAmount: String)
         fun onCalEightPress(currentAmount: String)
         fun onCalNinePress(currentAmount: String)
+        fun onCalTripleZeroPress(currentAmount: String)
+        fun onCalDotPress(currentAmount: String)
 
     }
 

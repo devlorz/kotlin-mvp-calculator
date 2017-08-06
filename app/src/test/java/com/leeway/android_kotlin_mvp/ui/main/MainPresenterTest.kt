@@ -28,7 +28,8 @@ class MainPresenterTest {
 
     lateinit var mainPresenter: MainPresenter<MainContract.View>
 
-    val mockCurrentValue = "1000"
+    val mockCurrentValue = "10"
+    val mockHundredValue = "100"
 
     @Before
     @Throws(Exception::class)
@@ -45,9 +46,27 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testCalCPress() {
+        mainPresenter.onCalCPress()
+        verify(mainView).setCurrentValue("0")
+    }
+
+    @Test
     fun testCalZeroPress() {
         mainPresenter.onCalZeroPress(mockCurrentValue)
         verify(mainView).setCurrentValue(mockCurrentValue + "0")
+    }
+
+    @Test
+    fun testCalZeroPressThousandValue() {
+        mainPresenter.onCalZeroPress(mockHundredValue)
+        verify(mainView).setCurrentValue("1,000")
+    }
+
+    @Test
+    fun testCalTripleZeroPress() {
+        mainPresenter.onCalTripleZeroPress(mockCurrentValue)
+        verify(mainView).setCurrentValue("10,000")
     }
 
     @Test
@@ -57,9 +76,21 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testCalOnePressThousandValue() {
+        mainPresenter.onCalOnePress(mockHundredValue)
+        verify(mainView).setCurrentValue("1,001")
+    }
+
+    @Test
     fun testCalTwoPress() {
         mainPresenter.onCalTwoPress(mockCurrentValue)
         verify(mainView).setCurrentValue(mockCurrentValue + "2")
+    }
+
+    @Test
+    fun testCalTwoPressThousandValue() {
+        mainPresenter.onCalTwoPress(mockHundredValue)
+        verify(mainView).setCurrentValue("1,002")
     }
 
     @Test
@@ -69,9 +100,21 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testCalThreePressThousandValue() {
+        mainPresenter.onCalThreePress(mockHundredValue)
+        verify(mainView).setCurrentValue("1,003")
+    }
+
+    @Test
     fun testCalFourPress() {
         mainPresenter.onCalFourPress(mockCurrentValue)
         verify(mainView).setCurrentValue(mockCurrentValue + "4")
+    }
+
+    @Test
+    fun testCalFourPressThousandValue() {
+        mainPresenter.onCalFourPress(mockHundredValue)
+        verify(mainView).setCurrentValue("1,004")
     }
 
     @Test
@@ -81,9 +124,21 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testCalFivePressThousandValue() {
+        mainPresenter.onCalFivePress(mockHundredValue)
+        verify(mainView).setCurrentValue("1,005")
+    }
+
+    @Test
     fun testCalSixPress() {
         mainPresenter.onCalSixPress(mockCurrentValue)
         verify(mainView).setCurrentValue(mockCurrentValue + "6")
+    }
+
+    @Test
+    fun testCalSixPressThousandValue() {
+        mainPresenter.onCalSixPress(mockHundredValue)
+        verify(mainView).setCurrentValue("1,006")
     }
 
     @Test
@@ -93,14 +148,38 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testCalSevenPressThousandValue() {
+        mainPresenter.onCalSevenPress(mockHundredValue)
+        verify(mainView).setCurrentValue("1,007")
+    }
+
+    @Test
     fun testCalEightPress() {
         mainPresenter.onCalEightPress(mockCurrentValue)
         verify(mainView).setCurrentValue(mockCurrentValue + "8")
     }
 
     @Test
+    fun testCalEightPressThousandValue() {
+        mainPresenter.onCalEightPress(mockHundredValue)
+        verify(mainView).setCurrentValue("1,008")
+    }
+
+    @Test
     fun testCalNinePress() {
         mainPresenter.onCalNinePress(mockCurrentValue)
         verify(mainView).setCurrentValue(mockCurrentValue + "9")
+    }
+
+    @Test
+    fun testCalNinePressThousandValue() {
+        mainPresenter.onCalNinePress(mockHundredValue)
+        verify(mainView).setCurrentValue("1,009")
+    }
+
+    @Test
+    fun testCalDotPress() {
+        mainPresenter.onCalDotPress(mockCurrentValue)
+        verify(mainView).setCurrentValue(mockCurrentValue + ".")
     }
 }
