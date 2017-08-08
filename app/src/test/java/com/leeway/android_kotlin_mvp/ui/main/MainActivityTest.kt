@@ -168,6 +168,13 @@ class MainActivityTest {
 
     @Test
     @Throws(Exception::class)
+    fun testBtnCalDeleteClick() {
+        activity.btnCalDelete.performClick()
+        verify(activity.mainPresenter).onCalDeletePress(currentAmount)
+    }
+
+    @Test
+    @Throws(Exception::class)
     fun testOnDestroy() {
         activity = activityController.destroy().get()
         verify(activity.mainPresenter).onDetach()

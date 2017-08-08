@@ -72,6 +72,16 @@ constructor(dataManager: DataManager,
         }
     }
 
+    override fun onCalDeletePress(currentAmount: String) {
+        val size = currentAmount.length
+        if (size > 1) {
+            val newAmount = currentAmount.substring(0, size - 1)
+            mvpView!!.setCurrentValue(setMoneyStringFormat(newAmount))
+        } else {
+            mvpView!!.setCurrentValue("0")
+        }
+    }
+
     private fun setCalValue(currentAmount: String, setValue: String) {
         if (currentAmount == "0") {
             if (setValue == "000") {

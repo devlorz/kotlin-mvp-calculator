@@ -178,6 +178,12 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testCalDeletePress() {
+        mainPresenter.onCalDeletePress(mockCurrentValue)
+        verify(mainView).setCurrentValue("1")
+    }
+
+    @Test
     fun testCalDotPress() {
         mainPresenter.onCalDotPress(mockCurrentValue)
         verify(mainView).setCurrentValue(mockCurrentValue + ".")
