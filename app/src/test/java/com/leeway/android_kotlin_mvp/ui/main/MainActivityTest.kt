@@ -175,6 +175,20 @@ class MainActivityTest {
 
     @Test
     @Throws(Exception::class)
+    fun testBtnCalPlusClick() {
+        activity.btnCalPlus.performClick()
+        verify(activity.mainPresenter).onCalPlusPress(currentAmount)
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun testBtnCalMinusClick() {
+        activity.btnCalMinus.performClick()
+        verify(activity.mainPresenter).onCalMinusPress(currentAmount)
+    }
+
+    @Test
+    @Throws(Exception::class)
     fun testOnDestroy() {
         activity = activityController.destroy().get()
         verify(activity.mainPresenter).onDetach()

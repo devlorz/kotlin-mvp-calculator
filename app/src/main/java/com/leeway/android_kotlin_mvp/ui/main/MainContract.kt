@@ -23,6 +23,8 @@ interface MainContract {
         fun onCalTripleZeroPress(currentAmount: String)
         fun onCalDotPress(currentAmount: String)
         fun onCalDeletePress(currentAmount: String)
+        fun onCalPlusPress(currentAmount: String)
+        fun onCalMinusPress(currentAmount: String)
 
     }
 

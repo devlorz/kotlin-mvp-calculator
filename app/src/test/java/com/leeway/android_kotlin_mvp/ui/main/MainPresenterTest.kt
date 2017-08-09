@@ -30,6 +30,7 @@ class MainPresenterTest {
 
     val mockCurrentValue = "10"
     val mockHundredValue = "100"
+    val mockZeroValue = "0"
 
     @Before
     @Throws(Exception::class)
@@ -187,5 +188,35 @@ class MainPresenterTest {
     fun testCalDotPress() {
         mainPresenter.onCalDotPress(mockCurrentValue)
         verify(mainView).setCurrentValue(mockCurrentValue + ".")
+    }
+
+    @Test
+    fun testCalPlusPress() {
+        mainPresenter.onCalPlusPress(mockCurrentValue)
+        verify(mainView).setCurrentValue(mockCurrentValue + "+")
+    }
+
+    @Test
+    fun testCalPlusPressOnPlusOperator() {
+        mainPresenter.onCalPlusPress("10+")
+        verify(mainView).setCurrentValue("10+")
+    }
+
+    @Test
+    fun testCalMinusPress() {
+        mainPresenter.onCalMinusPress(mockCurrentValue)
+        verify(mainView).setCurrentValue(mockCurrentValue + "-")
+    }
+
+    @Test
+    fun testCalMinusPressOnZeroValue() {
+        mainPresenter.onCalMinusPress(mockZeroValue)
+        verify(mainView).setCurrentValue("-")
+    }
+
+    @Test
+    fun testCalMinusPressOnPlusValue() {
+        mainPresenter.onCalMinusPress("10+")
+        verify(mainView).setCurrentValue("10-")
     }
 }

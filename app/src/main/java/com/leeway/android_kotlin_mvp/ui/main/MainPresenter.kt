@@ -82,6 +82,30 @@ constructor(dataManager: DataManager,
         }
     }
 
+    override fun onCalPlusPress(currentAmount: String) {
+        setOperator(currentAmount, '+')
+    }
+
+    override fun onCalMinusPress(currentAmount: String) {
+        setOperator(currentAmount, '-')
+    }
+
+    private fun setOperator(currentAmount: String, operator: Char) {
+        when (currentAmount.last()) {
+            '+','-','x','/' -> {
+                val newVal = currentAmount.slice(0..currentAmount.lastIndex-1) + operator
+                mvpView!!.setCurrentValue(newVal)
+            }
+            else -> {
+                if (currentAmount == "0" && operator == '-') {
+                    mvpView!!.setCurrentValue(operator.toString())
+                } else {
+                    mvpView!!.setCurrentValue(currentAmount + operator)
+                }
+            }
+        }
+    }
+
     private fun setCalValue(currentAmount: String, setValue: String) {
         if (currentAmount == "0") {
             if (setValue == "000") {
