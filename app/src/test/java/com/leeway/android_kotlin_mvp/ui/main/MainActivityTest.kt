@@ -189,6 +189,20 @@ class MainActivityTest {
 
     @Test
     @Throws(Exception::class)
+    fun testBtnCalMultipleClick() {
+        activity.btnCalMultiple.performClick()
+        verify(activity.mainPresenter).onCalMultiplePress(currentAmount)
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun testBtnCalDivideClick() {
+        activity.btnCalDivide.performClick()
+        verify(activity.mainPresenter).onCalDividePress(currentAmount)
+    }
+
+    @Test
+    @Throws(Exception::class)
     fun testOnDestroy() {
         activity = activityController.destroy().get()
         verify(activity.mainPresenter).onDetach()

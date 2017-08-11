@@ -42,6 +42,8 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
         btnCalDelete.setOnClickListener(this)
         btnCalPlus.setOnClickListener(this)
         btnCalMinus.setOnClickListener(this)
+        btnCalMultiple.setOnClickListener(this)
+        btnCalDivide.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -63,6 +65,8 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
             btnCalDelete -> mainPresenter.onCalDeletePress(currentAmount)
             btnCalPlus -> mainPresenter.onCalPlusPress(currentAmount)
             btnCalMinus -> mainPresenter.onCalMinusPress(currentAmount)
+            btnCalMultiple -> mainPresenter.onCalMultiplePress(currentAmount)
+            btnCalDivide -> mainPresenter.onCalDividePress(currentAmount)
         }
     }
 

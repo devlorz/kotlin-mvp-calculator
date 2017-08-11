@@ -90,9 +90,17 @@ constructor(dataManager: DataManager,
         setOperator(currentAmount, '-')
     }
 
+    override fun onCalMultiplePress(currentAmount: String) {
+        setOperator(currentAmount, '*')
+    }
+
+    override fun onCalDividePress(currentAmount: String) {
+        setOperator(currentAmount, '/')
+    }
+
     private fun setOperator(currentAmount: String, operator: Char) {
         when (currentAmount.last()) {
-            '+','-','x','/' -> {
+            '+','-','*','/' -> {
                 val newVal = currentAmount.slice(0..currentAmount.lastIndex-1) + operator
                 mvpView!!.setCurrentValue(newVal)
             }

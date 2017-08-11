@@ -219,4 +219,16 @@ class MainPresenterTest {
         mainPresenter.onCalMinusPress("10+")
         verify(mainView).setCurrentValue("10-")
     }
-}
+
+    @Test
+    fun testCalMultiplePress() {
+        mainPresenter.onCalMultiplePress(mockCurrentValue)
+        verify(mainView).setCurrentValue(mockCurrentValue + "*")
+    }
+
+    @Test
+    fun testCalDividePress() {
+        mainPresenter.onCalDividePress(mockCurrentValue)
+        verify(mainView).setCurrentValue(mockCurrentValue + "/")
+    }
+ }
