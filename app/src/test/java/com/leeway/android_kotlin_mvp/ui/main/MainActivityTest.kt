@@ -203,6 +203,13 @@ class MainActivityTest {
 
     @Test
     @Throws(Exception::class)
+    fun testBtnCalEqualClick() {
+        activity.btnCalEqual.performClick()
+        verify(activity.mainPresenter).onCalEqualPress(currentAmount)
+    }
+
+    @Test
+    @Throws(Exception::class)
     fun testOnDestroy() {
         activity = activityController.destroy().get()
         verify(activity.mainPresenter).onDetach()

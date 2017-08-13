@@ -44,6 +44,7 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
         btnCalMinus.setOnClickListener(this)
         btnCalMultiple.setOnClickListener(this)
         btnCalDivide.setOnClickListener(this)
+        btnCalEqual.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -67,6 +68,7 @@ class MainActivity : BaseActivity(), MainContract.View, View.OnClickListener {
             btnCalMinus -> mainPresenter.onCalMinusPress(currentAmount)
             btnCalMultiple -> mainPresenter.onCalMultiplePress(currentAmount)
             btnCalDivide -> mainPresenter.onCalDividePress(currentAmount)
+            btnCalEqual -> mainPresenter.onCalEqualPress(currentAmount)
         }
     }
 

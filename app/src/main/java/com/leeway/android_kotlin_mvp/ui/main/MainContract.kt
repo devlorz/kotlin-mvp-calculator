@@ -27,6 +27,7 @@ interface MainContract {
         fun onCalMinusPress(currentAmount: String)
         fun onCalMultiplePress(currentAmount: String)
         fun onCalDividePress(currentAmount: String)
+        fun onCalEqualPress(currentAmount: String)
 
     }
 

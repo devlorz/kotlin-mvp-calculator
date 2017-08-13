@@ -231,4 +231,16 @@ class MainPresenterTest {
         mainPresenter.onCalDividePress(mockCurrentValue)
         verify(mainView).setCurrentValue(mockCurrentValue + "/")
     }
+
+    @Test
+    fun testCalEqualPress() {
+        mainPresenter.onCalEqualPress(mockCurrentValue)
+        verify(mainView).setCurrentValue(mockCurrentValue)
+    }
+
+    @Test
+    fun testCalEqualPressOnPlusMinusValue() {
+        mainPresenter.onCalEqualPress("50-50+50")
+        verify(mainView).setCurrentValue("50")
+    }
  }

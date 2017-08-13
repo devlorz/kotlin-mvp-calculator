@@ -98,6 +98,40 @@ constructor(dataManager: DataManager,
         setOperator(currentAmount, '/')
     }
 
+    override fun onCalEqualPress(currentAmount: String) {
+        if (currentAmount.matches(".*[-+].*".toRegex())){
+            val numberSplitByOp = currentAmount.split("(?<=[-+*/=])".toRegex())
+            val result = calculatePlusMinusValue(numberSplitByOp)
+            mvpView!!.setCurrentValue(result)
+        } else {
+            mvpView!!.setCurrentValue(currentAmount)
+        }
+    }
+
+    private fun calculatePlusMinusValue(numberList: List<String>): String {
+        var beforeNum: Double = 0.0
+        var currentOp = ""
+        for (number in numberList) {
+            if (number == "-") {
+                currentOp = "-"
+                continue
+            }
+            val curNum = java.lang.Double.parseDouble(number.replace("+", "").replace("-", ""))
+            if (currentOp != "") {
+                if (currentOp == "+") {
+                    beforeNum += curNum
+                } else {
+                    beforeNum -= curNum
+                }
+            } else {
+                beforeNum = curNum
+            }
+
+            currentOp = if (number.contains("+")) "+" else "-"
+        }
+        return doubleToFormatString(beforeNum)
+    }
+
     private fun setOperator(currentAmount: String, operator: Char) {
         when (currentAmount.last()) {
             '+','-','*','/' -> {
