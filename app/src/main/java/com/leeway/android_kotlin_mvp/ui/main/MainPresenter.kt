@@ -5,6 +5,7 @@ import com.leeway.android_kotlin_mvp.ui.base.BasePresenter
 import io.reactivex.disposables.CompositeDisposable
 import java.math.RoundingMode
 import java.text.DecimalFormat
+import java.util.ArrayList
 import javax.inject.Inject
 
 /**
@@ -66,9 +67,19 @@ constructor(dataManager: DataManager,
 
     override fun onCalDotPress(currentAmount: String) {
         if (currentAmount.contains(".")) {
-
+            val numberSplitByOp = currentAmount.split("(?<=[-+*/=])".toRegex())
+            if (numberSplitByOp.last().isEmpty() &&
+                    numberSplitByOp[numberSplitByOp.lastIndex-1].matches(".*[-+*/=].*".toRegex())) {
+              mvpView!!.setCurrentValue(currentAmount + "0.")
+            } else {
+                if (numberSplitByOp.last().contains(".")) {
+                    mvpView!!.setCurrentValue(currentAmount)
+                } else {
+                    mvpView!!.setCurrentValue(currentAmount + ".")
+                }
+            }
         } else {
-            mvpView!!.setCurrentValue(currentAmount + ".")
+            mvpView!!.setCurrentValue(setMoneyStringFormat(currentAmount + "."))
         }
     }
 
@@ -99,13 +110,55 @@ constructor(dataManager: DataManager,
     }
 
     override fun onCalEqualPress(currentAmount: String) {
-        if (currentAmount.matches(".*[-+].*".toRegex())){
-            val numberSplitByOp = currentAmount.split("(?<=[-+*/=])".toRegex())
+        if (currentAmount.matches(".*[*/].*".toRegex())) {
+            val numberSplitByOp = currentAmount.replace(",","").split("(?<=[-+*/=])".toRegex())
+            val result = calculateMultipleDivideValue(numberSplitByOp)
+            mvpView!!.setCurrentValue(result)
+        } else if (currentAmount.matches(".*[-+].*".toRegex())){
+            val numberSplitByOp = currentAmount.replace(",","").split("(?<=[-+*/=])".toRegex())
             val result = calculatePlusMinusValue(numberSplitByOp)
             mvpView!!.setCurrentValue(result)
         } else {
             mvpView!!.setCurrentValue(currentAmount)
         }
+    }
+
+    private fun calculateMultipleDivideValue(numberList: List<String>): String {
+        var beforeNum: Double = 1.0
+        var currentOp = ""
+        val plusMinusNum = ArrayList<String>()
+        for (number in numberList) {
+            if (number.matches(".*[-+].*".toRegex()) && currentOp == ""
+                    || !number.matches(".*[-+*/=].*".toRegex()) && currentOp == "") {
+                plusMinusNum.add(number)
+                continue
+            }
+
+            val curNum = java.lang.Double.parseDouble(number.replace("*", "")
+                    .replace("/", "")
+                    .replace("+", "")
+                    .replace("-", ""))
+            if (currentOp != "") {
+                if (currentOp == "*") {
+                    beforeNum *= curNum
+                } else {
+                    beforeNum /= curNum
+                }
+            } else {
+                beforeNum = curNum
+            }
+            currentOp = if (number.contains("*")) "*" else "/"
+            if (number.matches(".*[-+].*".toRegex())) {
+                currentOp = if (number.contains("+")) "+" else "-"
+                plusMinusNum.add(beforeNum!!.toString() + currentOp)
+                currentOp = ""
+                beforeNum = 1.0
+            } else if (!number.matches(".*[-+*/=].*".toRegex())) {
+                plusMinusNum.add(beforeNum!!.toString() + "")
+            }
+        }
+        val calculatedValue = calculatePlusMinusValue(plusMinusNum)
+        return calculatedValue
     }
 
     private fun calculatePlusMinusValue(numberList: List<String>): String {
@@ -161,15 +214,30 @@ constructor(dataManager: DataManager,
     }
 
     private fun setMoneyStringFormat(value: String): String {
-//        val numberSplitByOp = value.split("(?<=[-+*/=])")
-        return getNumberFormat(value)
+        var numbers = value.split("(?<=[-+*/=])".toRegex()).toMutableList()
+        var lastNumber = numbers.last()
+        var lastIndex = numbers.lastIndex
+        if (lastNumber.isEmpty()) {
+            lastNumber = numbers[numbers.lastIndex-1]
+            lastIndex = numbers.lastIndex - 1
+        }
+        if (!lastNumber.matches(".*[-+*/=].*".toRegex())) {
+            numbers[lastIndex] = getNumberFormat(numbers[lastIndex].replace(",", ""))
+        }
+
+        var returnValue = ""
+        for (number in numbers) {
+            returnValue += number
+        }
+
+        return returnValue
     }
 
     private fun getNumberFormat(value: String): String {
         var intValue = value
         var decValue = ""
         if (value.contains(".")) {
-            val numValue = value.split("\\.")
+            val numValue = value.split("\\.".toRegex())
             intValue = numValue.first()
             if (numValue.size > 1) decValue = numValue[1]
         }

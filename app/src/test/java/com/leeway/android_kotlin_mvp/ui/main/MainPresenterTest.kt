@@ -65,6 +65,12 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testCalZeroPressOnDotValue() {
+        mainPresenter.onCalZeroPress("10.")
+        verify(mainView).setCurrentValue("10.0")
+    }
+
+    @Test
     fun testCalTripleZeroPress() {
         mainPresenter.onCalTripleZeroPress(mockCurrentValue)
         verify(mainView).setCurrentValue("10,000")
@@ -80,6 +86,12 @@ class MainPresenterTest {
     fun testCalOnePressThousandValue() {
         mainPresenter.onCalOnePress(mockHundredValue)
         verify(mainView).setCurrentValue("1,001")
+    }
+
+    @Test
+    fun testCalOnePressOnDotValue() {
+        mainPresenter.onCalOnePress("10.")
+        verify(mainView).setCurrentValue("10.1")
     }
 
     @Test
@@ -191,6 +203,24 @@ class MainPresenterTest {
     }
 
     @Test
+    fun testCalDotPressOnPlusValueWithDot() {
+        mainPresenter.onCalDotPress("50.0+")
+        verify(mainView).setCurrentValue("50.0+0.")
+    }
+
+    @Test
+    fun testCalDotPressOnPlusValue() {
+        mainPresenter.onCalDotPress("50.0+0")
+        verify(mainView).setCurrentValue("50.0+0.")
+    }
+
+    @Test
+    fun testCalDotPressOnDoubleDotValue() {
+        mainPresenter.onCalDotPress("50.0+0.")
+        verify(mainView).setCurrentValue("50.0+0.")
+    }
+
+    @Test
     fun testCalPlusPress() {
         mainPresenter.onCalPlusPress(mockCurrentValue)
         verify(mainView).setCurrentValue(mockCurrentValue + "+")
@@ -242,5 +272,35 @@ class MainPresenterTest {
     fun testCalEqualPressOnPlusMinusValue() {
         mainPresenter.onCalEqualPress("50-50+50")
         verify(mainView).setCurrentValue("50")
+    }
+
+    @Test
+    fun testCalEqualPressOnMinusValue() {
+        mainPresenter.onCalEqualPress("-50-100")
+        verify(mainView).setCurrentValue("-150")
+    }
+
+    @Test
+    fun testCalEqualPressOnMultipleValue() {
+        mainPresenter.onCalEqualPress("5*10")
+        verify(mainView).setCurrentValue("50")
+    }
+
+    @Test
+    fun testCalEqualPressOnAllOperatorValue() {
+        mainPresenter.onCalEqualPress("50+50*100/100-50")
+        verify(mainView).setCurrentValue("50")
+    }
+
+    @Test
+    fun testCalEqualPressOnThousandValuePlusOp() {
+        mainPresenter.onCalEqualPress("2,000+5")
+        verify(mainView).setCurrentValue("2,005")
+    }
+
+    @Test
+    fun testCalEqualPressOnThousandValueMultipleOp() {
+        mainPresenter.onCalEqualPress("2,000*5")
+        verify(mainView).setCurrentValue("10,000")
     }
  }
